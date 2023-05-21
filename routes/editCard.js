@@ -28,7 +28,9 @@ router.put("/:id", auth, async (req, res) => {
 
         let updated = await Card.findByIdAndUpdate(id, req.body);
 
-        let user = await User.findById(card.userID)
+        updated = await Card.findById(id);
+
+        let user = await User.findById(card.userID);
 
         let usercards = user.businessCard.filter((mycard) => mycard._id != id)
 
